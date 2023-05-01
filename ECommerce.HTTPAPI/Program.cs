@@ -35,7 +35,16 @@ builder.Services.AddCors(options =>
                                 .AllowAnyMethod();
         });
 });
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("https://localhost:7178", "http://localhost:3000")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
+});
 var app = builder.Build();
 app.UseCors();
 app.UseSession();

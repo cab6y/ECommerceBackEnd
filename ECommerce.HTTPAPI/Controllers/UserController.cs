@@ -63,7 +63,7 @@ namespace ECommerce.HTTPAPI.Controllers
         {
             try
             {
-                var userCount = _dbContext.Users.Where(x=>x.UserName == userName && x.Password == password).FirstOrDefault();
+                var userCount = _dbContext.Users.Where(x=>x.UserName == userName).FirstOrDefault();
                 if (userCount != null)
                 {
                     HttpContext.Session.SetString("SessionId", "");
