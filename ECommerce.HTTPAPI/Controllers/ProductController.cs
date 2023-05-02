@@ -57,11 +57,12 @@ namespace ECommerce.HTTPAPI.Controllers
         }
         [HttpDelete]
         public bool DeleteProduct(Guid id)
-        {
+        {   
             try
             {
                 var get = _dbContext.Products.Where(x => x.Id == id).FirstOrDefault();
                 _dbContext.Remove(get);
+                _dbContext.SaveChanges();
                 return true;
             }
             catch(Exception ex)
